@@ -29,6 +29,7 @@ public class BookService {
             book.setAuthor(updatedBook.getAuthor());
             book.setBookCover(updatedBook.getBookCover());
             book.setRecommendedByName(updatedBook.getRecommendedByName());
+            book.setDescription(updatedBook.getDescription());
             return bookRepository.save(book);
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
     }
@@ -43,6 +44,11 @@ public class BookService {
             book.setBookCover("https://via.placeholder.com/150");
         } else {
             book.setBookCover(newBook.getBookCover());
+        }
+        if (newBook.getDescription().isEmpty()) {
+            book.setDescription("No description available");
+        } else {
+            book.setDescription(newBook.getDescription());
         }
         book.setAvailable(true);
         bookRepository.save(book);
