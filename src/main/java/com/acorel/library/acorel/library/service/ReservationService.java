@@ -33,7 +33,9 @@ public class ReservationService {
         book.ifPresent(b -> {
             b.setAvailable(false);
             bookRepository.save(b);
+            newReservation.setBook(b);
         });
+
         return reservationRepository.save(newReservation);
     }
 

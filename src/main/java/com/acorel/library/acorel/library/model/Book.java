@@ -1,6 +1,7 @@
 package com.acorel.library.acorel.library.model;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -16,6 +17,8 @@ public class Book {
     private String bookCover;
     @NotEmpty
     private String recommendedByName;
+    @Size(max = 500)
+    private String description;
     private boolean isAvailable;
 
 
@@ -65,6 +68,14 @@ public class Book {
 
     public void setRecommendedByName(String recommendedByName) {
         this.recommendedByName = recommendedByName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public boolean isAvailable() {
