@@ -3,6 +3,7 @@ package com.acorel.library.acorel.library.model;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("RESERVATION")
@@ -10,7 +11,10 @@ public class Reservation {
 
     @Id
     private Integer id;
+    @NotEmpty
     private Integer bookId;
+    @Transient
+    private Book book;
     @NotEmpty
     private String reservedByName;
     @Email
@@ -30,8 +34,16 @@ public class Reservation {
         return id;
     }
 
+    public Book getBook() {
+        return book;
+    }
+
     public Integer getBookId() {
         return bookId;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public String getReservedByName() {
