@@ -1,6 +1,6 @@
 package com.acorel.library.acorel.library.model;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.*;
 
@@ -11,12 +11,12 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotEmpty
+    @NotNull
     private String title;
-    @NotEmpty
+    @NotNull
     private String author;
     private String bookCover;
-    @NotEmpty
+    @NotNull
     private String recommendedByName;
     @Size(max = 500)
     private String description;
