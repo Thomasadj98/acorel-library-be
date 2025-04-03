@@ -1,25 +1,25 @@
 package com.acorel.library.acorel.library.model;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.*;
 
-@Table("RESERVATION")
+@Entity
+@Table(name = "reservation")
 public class Reservation {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotEmpty
+    @NotNull
     private Integer bookId;
     @Transient
     private Book book;
-    @NotEmpty
+    @NotNull
     private String reservedByName;
     @Email
     private String reservedByEmail;
-    @NotEmpty
+    @NotNull
     private String reservedDate;
 
     public Reservation() {}
