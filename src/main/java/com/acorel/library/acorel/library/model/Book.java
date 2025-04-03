@@ -2,13 +2,14 @@ package com.acorel.library.acorel.library.model;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.*;
 
-@Table("BOOK")
+@Entity
+@Table(name = "book")
 public class Book {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty
     private String title;
